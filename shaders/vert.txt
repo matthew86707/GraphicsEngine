@@ -1,0 +1,14 @@
+#version 330 core
+uniform mat4 trans;
+uniform mat4 projection;
+uniform mat4 view;
+layout (location = 0) in vec3 ver;
+layout (location = 1) in vec3 normal;
+out vec3 Normal;
+out vec3 FragPos;
+void main()
+{
+	gl_Position =  projection *  view* trans *  vec4(ver.x, ver.y, ver.z, 1.0);
+	FragPos = vec3(trans * gl_Position);
+	Normal = normal;
+}
